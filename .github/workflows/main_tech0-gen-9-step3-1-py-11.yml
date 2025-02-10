@@ -24,12 +24,12 @@ jobs:
         with:
           python-version: '3.11'
 
-　　　 - name: Debug before venv creation
+      - name: Debug before venv creation
         run: |
-    　 　  python --version
-       　　which python
-      　 　ls -la
-      　　 echo $PWD
+          python --version
+          which python
+          ls -la
+          echo $PWD
 
       - name: Create and start virtual environment
         run: |
