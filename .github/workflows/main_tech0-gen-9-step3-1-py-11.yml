@@ -20,33 +20,18 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Set up Python version
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
-      - name: Debug Python environment (Before creating venv)
-        run: |
-          python --version
-          which python
-          ls -la
 
       - name: Create and start virtual environment
         run: |
           python -m venv venv
           source venv/bin/activate
-
-      - name: Debug Python environment (After creating venv)
-        run: |
-          source venv/bin/activate
-          python --version
-          which python
-          ls -la venv
-
+      
       - name: Install dependencies
-        run: |
-          source venv/bin/activate
-          pip install -r requirements.txt
-
+        run: pip install -r requirements.txt
+        
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
       - name: Zip artifact for deployment
@@ -83,4 +68,4 @@ jobs:
         with:
           app-name: 'tech0-gen-9-step3-1-py-11'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E1F979A216034FCEA56CBC7875C53A92 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_11058288583C4B2DBC621A22CDBCB736 }}
