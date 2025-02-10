@@ -24,10 +24,22 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Debug Python environment (Before creating venv)
+    　　run: |
+      　　python --version
+      　　which python
+      　　ls -la
+
       - name: Create and start virtual environment
         run: |
           python -m venv venv
           source venv/bin/activate
+
+　　　　- name: Debug Python environment (After creating venv)
+    　　　run: |
+      　　　python --version
+      　　　which python
+      　　　ls -la venv
       
       - name: Install dependencies
         run: pip install -r requirements.txt
