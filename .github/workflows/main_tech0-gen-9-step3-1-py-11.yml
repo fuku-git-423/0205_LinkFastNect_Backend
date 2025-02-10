@@ -16,33 +16,33 @@ jobs:
     permissions:
       contents: read #This is required for actions/checkout
 
-    steps:
-      - uses: actions/checkout@v4
+steps:
+  - uses: actions/checkout@v4
 
-      - name: Set up Python version
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
+  - name: Set up Python version
+    uses: actions/setup-python@v4
+    with:
+      python-version: '3.11'
 
-      - name: Debug Python environment (Before creating venv)
-    　　run: |
-      　　python --version
-      　　which python
-      　　ls -la
+  - name: Debug Python environment (Before creating venv)
+    run: |
+      python --version
+      which python
+      ls -la
+  
+  - name: Create and start virtual environment
+    run: |
+      python -m venv venv
+      source venv/bin/activate
 
-      - name: Create and start virtual environment
-        run: |
-          python -m venv venv
-          source venv/bin/activate
-
-　　　　- name: Debug Python environment (After creating venv)
-    　　　run: |
-      　　　python --version
-      　　　which python
-      　　　ls -la venv
-      
-      - name: Install dependencies
-        run: pip install -r requirements.txt
+  - name: Debug Python environment (After creating venv)
+    run: |
+      python --version
+      which python
+      ls -la venv
+  
+  - name: Install dependencies
+    run: pip install -r requirements.txt
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
