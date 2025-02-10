@@ -20,9 +20,16 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Set up Python version
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v4
         with:
           python-version: '3.11'
+
+　　　　- name: Debug before venv creation
+    　　run: |
+    　　  python --version
+      　　which python
+      　　ls -la
+      　　echo $PWD
 
       - name: Create and start virtual environment
         run: |
@@ -30,7 +37,9 @@ jobs:
           source venv/bin/activate
       
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
